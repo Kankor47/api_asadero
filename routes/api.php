@@ -29,10 +29,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 //lista por ID y busqueda completa
-Route::get("list_ingrediente/{id_ingrediente?}",[IngredientesController::class,'listID']);
-Route::get("list_pedido/{id_pedido?}",[PedidoController::class,'listID']);
+Route::get("list_tipo_pedido/{id_pedido?}",[PedidoController::class,'listID']);
 Route::get("list_platillo/{id_platillo?}",[PlatillosController::class,'listID']);
-Route::get("list_detalle_platillo/{id_deta_platillo?}",[DetallePlatilloController::class,'listID']);
 Route::get("list_local/{id_local?}",[LocalController::class,'listID']);
 Route::get("list_tipo_usuario/{id?}",[TipoUsuarioController::class,'listID']);
 Route::get("list_usuario/{id?}",[UsuarioController::class,'listID']);
@@ -40,8 +38,7 @@ Route::get("list_pedido/{id?}",[CabeceraPedidoController::class,'listID']);
 
 
 //post
-Route::post("add_deta_platillo", [DetallePlatilloController::class,'add']);
-Route::post("add_ingrediente", [IngredientesController::class,'add']);
+
 Route::post("add_tipo_pedido", [PedidoController::class,'add']);
 Route::post("add_platillo", [PlatillosController::class,'add']);
 Route::post("add_local", [LocalController::class,'add']);
@@ -52,8 +49,6 @@ Route::post("add_pedido", [CabeceraPedidoController::class,'add']);
 
 //put
 Route::put("update_tipo_pedido",[PedidoController::class,'update']);
-Route::put("update_deta_platillo",[DetallePlatilloController::class,'update']);
-Route::put("update_ingrediente",[IngredientesController::class,'update']);
 Route::put("update_platillo",[PlatillosController::class,'update']);
 Route::put("update_local",[LocalController::class,'update']);
 Route::put("update_usuario",[UsuarioController::class,'update']);
@@ -61,16 +56,13 @@ Route::put("update_tipo_usuario",[TipoUsuarioController::class,'update']);
 
 
 //delete
-Route::delete("delete_ingrediente/{id_ingrediente}",[IngredientesController::class,'delete']);
 Route::delete("delete_tipo_pedido/{id_pedido}",[PedidoController::class,'delete']);
-Route::delete("delete_deta_platillo/{id_deta_platillo}",[DetallePlatilloController::class,'delete']);
 Route::delete("delete_platillo/{id_platillo}",[PlatillosController::class,'delete']);
 Route::delete("delete_local/{id_local}",[LocalController::class,'delete']);
 Route::delete("delete_tipo_usuario/{id_local}",[TipoUsuarioController::class,'delete']);
 
 
 //search
-Route::get("search_ingrediente/{deta_ingrediente}",[IngredientesController::class,'search']);
 Route::get("search_platillo/{nombre_platillo}",[PlatillosController::class,'search']);
 Route::get("search_pedido/{deta_pedido}",[PedidoController::class,'search']);
 Route::get("search_local/{nombre_local}",[LocalController::class,'search']);
@@ -78,7 +70,6 @@ Route::get("search_tipo_usuario/{tipo_usuario}",[TipoUsuarioController::class,'s
 Route::get("search_usuario/{usuario}",[UsuarioController::class,'search']);
 
 //agregar con validación de ingresos
-Route::post("save_ingrediente",[IngredientesController::class,'testData']);
 Route::post("save_platillo",[PlatillosController::class,'testData']);
 Route::post("save_pedido",[PedidoController::class,'testData']);
 Route::post("save_local",[LocalController::class,'testData']);
