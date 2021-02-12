@@ -38,7 +38,6 @@ Route::get("list_pedido/{id?}",[CabeceraPedidoController::class,'listID']);
 
 
 //post
-
 Route::post("add_tipo_pedido", [PedidoController::class,'add']);
 Route::post("add_platillo", [PlatillosController::class,'add']);
 Route::post("add_local", [LocalController::class,'add']);
