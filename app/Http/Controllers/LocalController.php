@@ -19,7 +19,7 @@ class LocalController extends Controller
         $local->id_platillo=$req->id_platillo;
         $result=$local->save();
         if($result){
-            return ["Result"=>"Información agregada con exito"];
+            return ["Result"=>"Ok"];
         }
         else{
             return ["Result"=>"Error al agregar"];
@@ -27,18 +27,18 @@ class LocalController extends Controller
     }
     
     function update(Request $req){
-        $local= Local::find($req);
+        $local= Local::find($req->id_loca);
         $local->nombre_local=$req->nombre_local;
         $local->direccion_local=$req->direccion_local;
         $local->id_platillo=$req->id_platillo;
         $result=$local->save();
         if($result)
         {
-            return ["Resulta"=>"Datos actualizados"];
+            return ["Result"=>"Datos actualizados"];
         }
         else
         {
-            return ["Resulta"=>"Error"];
+            return ["Result"=>"Error"];
         }
     }
 

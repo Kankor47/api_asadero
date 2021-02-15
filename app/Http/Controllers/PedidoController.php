@@ -18,7 +18,7 @@ class PedidoController extends Controller
         $pedido->deta_pedido=$req->deta_pedido;
         $result=$pedido->save();
         if($result){
-            return ["Result"=>"Información agregada con exito"];
+            return ["Result"=>"Ok"];
         }
         else{
             return ["Result"=>"Error al agregar"];
@@ -27,28 +27,15 @@ class PedidoController extends Controller
 
     //actualizar
     function update(Request $req){
-        $rules=array(
-            "deta_pedido"=>"required"
-        );
-        $validator=Validator::make($req->all(),$rules);
-        if($validator->fails())
-        {
-            return response()->json($validator->errors(),401);
-        }
-        else{
             $pedido= Pedido::find($req->id_pedido);
             $pedido ->deta_pedido=$req->deta_pedido;
             $result=$pedido->save();
-            if($result)
-            {
-                return ["Resulta"=>"Datos actualizados"];
+            if($result){
+                return ["Result"=>"ok"];
             }
-            else
-            {
-                return ["Resulta"=>"Error"];
+            else{
+                return ["Result"=>"Error de envio"];
             }
-        }
-        
     }
 
     function delete($id_pedido){

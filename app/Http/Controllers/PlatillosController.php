@@ -47,11 +47,11 @@ class PlatillosController extends Controller
             $result=$platillo->save();
             if($result)
             {
-            return ["Resulta"=>"Datos actualizados"];
+            return ["Result"=>"Datos actualizados"];
         }
         else
         {
-            return ["Resulta"=>"Error"];
+            return ["Result"=>"Error"];
         }
         }
         

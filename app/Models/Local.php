@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Local extends Model
 {
     protected $table = 'tbl_local';
-    protected $primaryKey = 'id_local';
+    protected $primaryKey = 'id_loca';
     public $timestamps=false;
     use HasFactory;
 }
