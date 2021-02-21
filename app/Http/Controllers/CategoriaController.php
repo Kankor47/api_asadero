@@ -3,35 +3,33 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use App\Models\Local;
+use App\Models\Categoria;
 
-class LocalController extends Controller
+class CategoriaController extends Controller
 {
-
+    
     static function rules()
     {
         return [
-            'nombre_local' => 'required|string',
-            'direccion_local' => 'required|string',
+            'detalle_categoria' => 'required|string'
         ];
     }
 
     function get($id = null)
     {
-        return $id ? Local::find($id) : Local::all();
+        return $id ? Categoria::find($id) : Categoria::all();
     }
 
     function add(Request $request)
     {
-        $validator = Validator::make($request->all(), LocalController::rules());           
+        $validator = Validator::make($request->all(), CategoriaController::rules());           
         if ($validator->fails()) {
-            return response()->json($validator->errors() );      
+            return response()->json($validator->errors());      
         }else{
-            $local = new Local([
-                'nombre_local' => $request->nombre_local,
-                'direccion_local'=>$request->direccion_local
+            $categoria = new Categoria([
+                'detalle_categoria' => $request->detalle_categoria
             ]);   
-            $result=$local->save();
+            $result=$categoria->save();
             if($result){
                 return response()->json(["data"=>"Información agregada con exito"]);
                }else{
@@ -42,14 +40,13 @@ class LocalController extends Controller
 
     function update(Request $request)
     {
-        $validator = Validator::make($request->all(), LocalController::rules());           
+        $validator = Validator::make($request->all(), CategoriaController::rules());           
         if ($validator->fails()) {
             return response()->json($validator->errors());      
         }else{
-            $local = Local::find($request->id_local);
-            $local->nombre_local = $request->nombre_local;
-            $local->direccion_local = $request->direccion_local;
-            $result=$local->save();
+            $categoria = Categoria::find($request->id_categoria);
+            $categoria->detalle_categoria = $request->detalle_categoria;
+            $result=$categoria->save();
             if($result){
                 return response()->json(["data"=>"Información actualizada con exito"]);
                }else{
@@ -61,8 +58,8 @@ class LocalController extends Controller
 
     function delete($id)
     {
-        $local = Local::find($id);
-        $result = $local->delete();
+        $categoria = Categoria::find($id);
+        $result = $categoria->delete();
         if($result){
             return response()->json(["data"=>"Información eliminada con exito"]);
            }else{
@@ -72,6 +69,6 @@ class LocalController extends Controller
 
     function search($key)
     {
-        return Local::where("nombre_local", $key)->get();
+        return Categoria::where("detalle_categoria", $key)->get();
     }
 }

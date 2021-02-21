@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Local extends Model
+class Categoria extends Model
 {
     use HasFactory;
-    protected $table="tbl_local";
-    protected $primaryKey = "id_local";
+    protected $table="tbl_categoria";
+    protected $primaryKey = "id_categoria";
     public $timestamps=false;
     protected $fillable = [
-        'id_local', 
-        'nombre_local',
-        'direccion_local'
+        'id_categoria', 
+        'detalle_categoria'
     ];
 }
